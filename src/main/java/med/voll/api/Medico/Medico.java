@@ -18,17 +18,35 @@ public class Medico {
     private String email;
     private String telefono;
     private String documento;
+    private Boolean activo;
     @Enumerated(EnumType.STRING)
     private Especialidad especialidad;
     @Embedded
     private Direccion direccion;
 
     public Medico(RegistroMedicos medico) {
+        this.activo=true;
         this.nombre=medico.nombre();
         this.email=medico.email();
         this.telefono=medico.telefono();
         this.documento=medico.documento();
         this.especialidad=medico.especialidad();
         this.direccion=new Direccion(medico.direccion());
+    }
+
+    public void actualizarDatos(ActualizarMedico actualizarMedico) {
+        if(actualizarMedico.nombre()!=null){
+            this.nombre=actualizarMedico.nombre();
+        }
+        if(actualizarMedico.email()!=null){
+            this.email=actualizarMedico.email();
+        }
+        if (actualizarMedico.direccion()!=null){
+            this.direccion=direccion.actualizarDireccion(actualizarMedico.direccion());
+        }
+    }
+
+    public void eliminaMedicos(){
+        this.activo=false;
     }
 }
