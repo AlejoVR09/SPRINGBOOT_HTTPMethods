@@ -1,5 +1,6 @@
 package med.voll.api.Controller;
 
+import jakarta.validation.Valid;
 import med.voll.api.Medico.Medico;
 import med.voll.api.Medico.MedicoRepository;
 import med.voll.api.Medico.RegistroMedicos;
@@ -15,7 +16,7 @@ public class MedicosController {
     @Autowired
     private MedicoRepository medicoRepository;
     @PostMapping
-    public void recibirMedico(@RequestBody RegistroMedicos medico){
+    public void recibirMedico(@RequestBody @Valid RegistroMedicos medico){
         medicoRepository.save(new Medico(medico));
         System.out.println(medico);
     }
