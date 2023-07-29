@@ -1,6 +1,6 @@
 package med.voll.api.Paciente;
 
-import med.voll.api.DatosDireccion.Direccion;
+import med.voll.api.DatosDireccion.DatosDireccion;
 
-public record RegistroPacientes(String nombre, String email, String telefono, String documentoIdentidad, Direccion direccion) {
+public record RegistroPacientes(String nombre, String email, String telefono, String documentoIdentidad, DatosDireccion direccion) {
 }
